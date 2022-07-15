@@ -288,8 +288,7 @@ class LogStash::Inputs::Flume < LogStash::Inputs::Base
         since = time_by_device[device_id]
 
         unless since
-          # since = now - 0.5
-          since = now - 0.01
+          since = now - 0.5
         end
 
         @logger.debug("Getting latest values from Flume API", :device_id => device_id, :since => since.iso8601)

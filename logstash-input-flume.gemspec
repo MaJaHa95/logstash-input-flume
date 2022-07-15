@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'logstash-input-flume'
-  s.version       = '0.1.2'
+  s.version       = '0.2.0'
   s.licenses      = ['Apache-2.0']
   s.summary       = 'Connect to Flume API'
   s.description   = 'Connect to Flume API'
