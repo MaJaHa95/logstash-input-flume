@@ -85,8 +85,6 @@ class ResourceOwnerOAuthClient < OAuthClient
 
       token_resp_json = JSON.parse(auth_resp.body)
 
-      puts token_resp_json
-
       unless token_resp_json["success"]
         detailed = token_resp_json["detailed"]
         
@@ -156,8 +154,6 @@ class FlumeApiConnection
     resp_json = JSON.parse(resp.body)
 
     unless resp_json["success"]
-      puts resp.to_hash
-
       retry_after = resp["retry-after"]
 
       if retry_after
@@ -228,15 +224,9 @@ class FlumeApiConnection
       }
     }
 
-    puts ret
-
     ret.sort_by! { |item| item[:from] }
 
-    puts ret
-
     ret.pop
-
-    puts ret
 
     return ret
   end
@@ -306,8 +296,6 @@ class LogStash::Inputs::Flume < LogStash::Inputs::Base
 
         readings_by_minute = @conn.get_readings_by_minute(device, now, since)
 
-        puts JSON.generate(readings_by_minute)
-        
         unless readings_by_minute.empty?
           time_by_device[device_id] = readings_by_minute.map { |v| v[:to] }.max
     
